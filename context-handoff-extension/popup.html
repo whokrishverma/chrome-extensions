@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Context Handoff</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <header>
+    <h1>Context Handoff</h1>
+    <div class="header-actions">
+      <button id="themeBtn" title="Toggle theme"><span id="themeIcon">☀</span></button>
+      <button id="settingsBtn" title="Settings">⚙</button>
+    </div>
+  </header>
+
+  <div class="tabs">
+    <button class="tab active" data-mode="slicer">Slicer</button>
+    <button class="tab" data-mode="overview">Overview</button>
+    <button class="tab" data-mode="project">Project</button>
+  </div>
+
+  <section id="slicerPanel" class="panel">
+    <label>Direction</label>
+    <select id="direction">
+      <option value="beginning">From beginning</option>
+      <option value="recent" selected>From recent</option>
+    </select>
+
+    <label>Percentage: <span id="percentValue">30</span>%</label>
+    <input type="range" id="percent" min="1" max="100" value="30" />
+
+    <p class="hint">No model call — pure text slicing, works with zero setup.</p>
+  </section>
+
+  <section id="overviewPanel" class="panel hidden">
+    <p class="hint">Sends the transcript to your configured provider and asks for a
+      concise context-handoff summary: goal, decisions, constraints, next steps.</p>
+  </section>
+
+  <section id="projectPanel" class="panel hidden">
+    <p class="hint">Same as Overview, but structured for technical/project work:
+      Goal, Current State, Decisions, Files produced, Open Issues, Next Steps.</p>
+  </section>
+
+  <button id="runBtn">Run</button>
+  <p id="status"></p>
+
+  <script src="popup.js"></script>
+</body>
+</html>

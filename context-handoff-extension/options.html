@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Context Handoff — Settings</title>
+  <link rel="stylesheet" href="options.css" />
+</head>
+<body>
+  <div class="card">
+    <h1>Settings</h1>
+    <p class="hint">
+      Your API key is stored only in this browser (chrome.storage.local) and is sent
+      directly from your browser to the provider you choose below. It never passes
+      through any server we control. The Slicer mode needs no key at all.
+    </p>
+
+    <label>Provider</label>
+    <select id="provider">
+      <option value="anthropic">Anthropic (Claude)</option>
+      <option value="openai">OpenAI</option>
+      <option value="gemini">Google Gemini</option>
+      <option value="groq">Groq</option>
+      <option value="ollama">Ollama (local, free — no key)</option>
+    </select>
+
+    <label>Model <span class="optional">(optional — sensible default used if blank)</span></label>
+    <input type="text" id="model" placeholder="e.g. claude-sonnet-4-6" />
+
+    <div id="apiKeyRow">
+      <label>API Key</label>
+      <input type="password" id="apiKey" placeholder="Paste your key" />
+    </div>
+
+    <div id="baseUrlRow" class="hidden">
+      <label>Ollama server URL</label>
+      <input type="text" id="baseUrl" placeholder="http://localhost:11434" />
+      <p class="hint" style="margin-top:6px;">
+        Runs fully on your machine, free, no key. Make sure Ollama is running
+        (<code>ollama serve</code>) and has pulled a model (<code>ollama pull llama3.2</code>).
+        Since this request comes from a Chrome extension, Ollama needs to allow
+        that origin — start it with
+        <code>OLLAMA_ORIGINS=chrome-extension://* ollama serve</code> if you get a
+        CORS/connection error.
+      </p>
+    </div>
+
+    <button id="saveBtn">Save</button>
+    <p id="status"></p>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>
