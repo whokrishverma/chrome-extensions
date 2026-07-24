@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Insta Saver",
+  "version": "1.0.0",
+  "description": "Right-click any Instagram post to save it with a custom title, category, and labels into your local gallery.",
+  "permissions": ["contextMenus"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Insta Saver"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

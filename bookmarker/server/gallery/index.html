@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insta Saver — Gallery</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>📌 Insta Saver</h1>
+    <div class="toolbar">
+      <input type="text" id="search" placeholder="Search title or notes…">
+      <select id="categoryFilter">
+        <option value="">All categories</option>
+      </select>
+      <select id="labelFilter">
+        <option value="">All labels</option>
+      </select>
+      <span class="count" id="count"></span>
+    </div>
+  </header>
+
+  <main id="grid" class="grid">
+    <p class="empty" id="emptyMsg">No posts saved yet. Right-click a post on Instagram and choose "Save to Insta Saver".</p>
+  </main>
+
+  <!-- Edit modal -->
+  <div id="modalOverlay" class="modal-overlay hidden">
+    <div class="modal">
+      <h2>Edit post</h2>
+      <label>Title</label>
+      <input type="text" id="editTitle">
+      <label>Category</label>
+      <input type="text" id="editCategory">
+      <label>Labels (comma separated)</label>
+      <input type="text" id="editLabels">
+      <label>Notes</label>
+      <textarea id="editNotes"></textarea>
+      <div class="modal-actions">
+        <button id="modalCancel" class="btn-secondary">Cancel</button>
+        <button id="modalDelete" class="btn-danger">Delete</button>
+        <button id="modalSave" class="btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

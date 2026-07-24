@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Save to Insta Saver</title>
+<style>
+  :root {
+    --pink: #e1306c;
+    --bg: #fafafa;
+    --border: #e0e0e0;
+    --text: #222;
+    --muted: #888;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 16px;
+  }
+  h1 {
+    font-size: 15px;
+    margin: 0 0 12px 0;
+    font-weight: 600;
+    color: var(--pink);
+  }
+  .preview-wrap {
+    width: 100%;
+    height: 180px;
+    border-radius: 10px;
+    background: #eee;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+    border: 1px solid var(--border);
+  }
+  .preview-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .preview-wrap .placeholder {
+    color: var(--muted);
+    font-size: 12px;
+    text-align: center;
+    padding: 8px;
+  }
+  label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    margin: 10px 0 4px;
+    color: #555;
+  }
+  input[type="text"], textarea, select {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 13px;
+    font-family: inherit;
+    background: #fff;
+  }
+  textarea { resize: vertical; min-height: 50px; }
+  .row { display: flex; gap: 8px; }
+  .row > div { flex: 1; }
+  .chip-input {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 6px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: #fff;
+    min-height: 36px;
+  }
+  .chip-input input {
+    border: none;
+    outline: none;
+    flex: 1;
+    min-width: 60px;
+    font-size: 13px;
+    padding: 2px;
+  }
+  .chip {
+    background: #fce4ec;
+    color: var(--pink);
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .chip button {
+    background: none;
+    border: none;
+    color: var(--pink);
+    cursor: pointer;
+    font-size: 13px;
+    line-height: 1;
+    padding: 0;
+  }
+  .actions {
+    margin-top: 16px;
+    display: flex;
+    gap: 8px;
+  }
+  button.save-btn {
+    flex: 1;
+    background: var(--pink);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  button.save-btn:disabled { opacity: 0.5; cursor: default; }
+  button.cancel-btn {
+    background: #eee;
+    color: #555;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  #status {
+    font-size: 12px;
+    margin-top: 8px;
+    min-height: 16px;
+  }
+  #status.error { color: #c62828; }
+  #status.ok { color: #2e7d32; }
+  datalist {}
+</style>
+</head>
+<body>
+  <h1>📌 Save to Insta Saver</h1>
+
+  <div class="preview-wrap" id="previewWrap">
+    <div class="placeholder">Loading preview…</div>
+  </div>
+
+  <label for="title">Title *</label>
+  <input type="text" id="title" placeholder="e.g. Overnight oats recipe" autofocus>
+
+  <div class="row">
+    <div>
+      <label for="category">Category</label>
+      <input type="text" id="category" list="categoryList" placeholder="e.g. Recipes">
+      <datalist id="categoryList"></datalist>
+    </div>
+  </div>
+
+  <label for="labelInput">Labels</label>
+  <div class="chip-input" id="chipInput">
+    <input type="text" id="labelInput" list="labelList" placeholder="type + Enter">
+  </div>
+  <datalist id="labelList"></datalist>
+
+  <label for="notes">Notes</label>
+  <textarea id="notes" placeholder="Optional notes to your future self"></textarea>
+
+  <div class="actions">
+    <button class="cancel-btn" id="cancelBtn">Cancel</button>
+    <button class="save-btn" id="saveBtn">Save Post</button>
+  </div>
+  <div id="status"></div>
+
+  <script src="save.js"></script>
+</body>
+</html>
